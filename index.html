@@ -398,8 +398,20 @@
 }
 
 @media (max-width:600px){
-  .cert-entry{flex-wrap:wrap;}
-  .cert-entry .cert-link{margin-left:66px; align-self:flex-start;}
+  .cert-entry{
+    display:grid;
+    grid-template-columns:52px 1fr;
+    column-gap:14px;
+    row-gap:8px;
+    align-items:start;
+  }
+  .cert-entry .icon-circle{grid-row:1 / span 2;}
+  .cert-entry .cert-link{
+    grid-column:2;
+    justify-self:start;
+    margin-left:0;
+    align-self:start;
+  }
 }
 
 </style>
