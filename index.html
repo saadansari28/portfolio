@@ -379,6 +379,29 @@
 .wa-float:hover{transform:scale(1.1);}
 .wa-float svg{width:30px; height:30px; fill:#fff;}
 
+.cert-entry .cert-link{
+  margin-left:auto;
+  align-self:center;
+  white-space:nowrap;
+  color:var(--gold);
+  font-size:13px;
+  font-weight:600;
+  padding:5px 12px;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  text-decoration:none;
+  transition:background .3s ease, color .3s ease;
+}
+.cert-entry .cert-link:hover{
+  background:var(--gold);
+  color:var(--bg);
+}
+
+@media (max-width:600px){
+  .cert-entry{flex-wrap:wrap;}
+  .cert-entry .cert-link{margin-left:66px; align-self:flex-start;}
+}
+
 </style>
 <link type="text/css" rel="stylesheet" href="chrome-extension://fheoggkfdfchfphceeifdbepaooicaho/css/mcafee_fonts.css"></head>
 <body>
@@ -536,6 +559,8 @@
             <div class="cert-title">AWS Academy Graduate — Machine Learning Foundations</div>
             <div class="cert-org">AWS Academy</div>
           </div>
+            <a class="cert-link" href="https://www.credly.com/go/5paFWnQe" target="_blank" rel="noreferrer">View ↗</a>
+
         </div>
 
          <div class="cert-entry reveal in">
@@ -544,6 +569,8 @@
             <div class="cert-title">AWS Academy Graduate — Cloud Foundations</div>
             <div class="cert-org">AWS Academy</div>
           </div>
+                      <a class="cert-link" href="https://www.credly.com/go/h4p294jz" target="_blank" rel="noreferrer">View  ↗</a>
+
         </div>
 
         <div class="cert-entry reveal in">
@@ -552,6 +579,7 @@
             <div class="cert-title">GenAI Powered Data Analytics Job Simulation</div>
             <div class="cert-org">Tata Group (via Forage)</div>
           </div>
+          <a class="cert-link" href="docs/certificates/Tata_GenAi_DA.pdf" target="_blank" rel="noreferrer">View ↗</a>
         </div>
         <div class="cert-entry reveal in">
           <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
@@ -559,6 +587,7 @@
             <div class="cert-title">Data Visualisation: Empowering Business with Effective Insights</div>
             <div class="cert-org">Tata Group (via Forage)</div>
           </div>
+          <a class="cert-link" href="docs/certificates/Tata_Vis_DA.pdf" target="_blank" rel="noreferrer">View ↗</a>
         </div>
         <div class="cert-entry reveal in">
           <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
@@ -566,14 +595,16 @@
             <div class="cert-title">Data Analytics Job Simulation</div>
             <div class="cert-org">Deloitte (via Forage)</div>
           </div>
+          <a class="cert-link" href="docs/certificates/deloitte_DA.pdf" target="_blank" rel="noreferrer">View ↗</a>
         </div>
+        <!--
         <div class="cert-entry reveal in">
           <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
           <div>
             <div class="cert-title">Software Engineering Job Simulation</div>
             <div class="cert-org">Forage</div>
           </div>
-        </div>
+        </div>-->
         
       </div>
     </div>
