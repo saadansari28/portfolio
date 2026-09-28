@@ -1,0 +1,1018 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saad Ansari — Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#081014;
+    --bg-alt:#0F2124;
+    --gold:#2DD4BF;
+    --gold-light:#5EEAD4;
+    --amber:#0EA5A0;
+    --text:#FFFFFF;
+    --muted:#A9C2C1;
+    --hairline: rgba(45,212,191,0.3);
+    --container: 950px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:-0.01em;}
+  .container{max-width:var(--container); margin:0 auto; padding:0 24px;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .gold{color:var(--gold);}
+  .muted{color:var(--muted);}
+  section{padding:96px 0;}
+  @media (max-width:768px){ section{padding:64px 0;} }
+
+  /* Eyebrow badge */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1.5px solid var(--gold);
+    border-radius:999px;
+    padding:8px 20px;
+    font-size:14px;
+    margin-bottom:24px;
+  }
+  .eyebrow b{color:var(--gold); font-weight:700;}
+  .eyebrow span{color:var(--text); font-weight:400;}
+
+  /* Buttons */
+  .btn{
+    display:inline-block;
+    border:2px solid var(--gold);
+    border-radius:999px;
+    padding:12px 28px;
+    font-weight:600;
+    font-size:15px;
+    text-underline-offset:4px;
+    text-decoration:underline;
+    text-decoration-color:transparent;
+    position:relative;
+    overflow:hidden;
+    transition:color .3s ease, border-color .3s ease;
+    background:transparent;
+    z-index:1;
+  }
+  .btn::before{
+    content:'';
+    position:absolute; inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s ease;
+    z-index:-1;
+  }
+  .btn:hover::before{transform:scaleX(1);}
+  .btn:hover{color:var(--bg);}
+  .btn.white{border-color:#fff;}
+  .btn.white::before{background:#fff;}
+
+  /* Icon circle */
+  .icon-circle{
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0px rgba(242,184,7,0);
+    transition:transform .3s ease, box-shadow .3s ease;
+    flex-shrink:0;
+  }
+  .icon-circle svg{width:22px; height:22px; fill:var(--bg);}
+  .icon-circle:hover{transform:rotate(8deg) scale(1.08); box-shadow:0 0 24px rgba(45,212,191,0.45);}
+
+  .icon-outline{
+    width:44px; height:44px;
+    border-radius:50%;
+    border:1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .icon-outline svg{width:18px; height:18px; fill:var(--gold); transition:fill .3s ease;}
+  .icon-outline:hover{background:var(--gold); transform:translateY(-3px);}
+  .icon-outline:hover svg{fill:var(--bg);}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .65s ease-out, transform .65s ease-out;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .stagger > *{transition-delay:calc(var(--i, 0) * 0.12s);}
+
+  /* ===== NAVBAR ===== */
+  #navbar{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 0;
+    transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
+  }
+  #navbar.scrolled{
+    background:rgba(10,10,38,0.85);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 24px rgba(0,0,0,0.35);
+    padding:14px 0;
+  }
+  #navbar .container{display:flex; align-items:center; justify-content:space-between;}
+  .nav-logo{font-family:'Poppins'; font-weight:700; font-size:18px;}
+  .nav-links{display:flex; gap:36px; position:relative;}
+  .nav-links a{font-weight:600; font-size:15px; padding-bottom:6px; position:relative; color:#fff;}
+  .nav-underline{
+    position:absolute; bottom:0; height:2px; background:var(--gold);
+    transition:left .35s ease, width .35s ease;
+  }
+  .hamburger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .hamburger span{width:26px; height:2px; background:#fff; display:block; transition:.3s;}
+  .mobile-panel{
+    display:none; flex-direction:column; gap:20px;
+    background:var(--bg-alt); padding:24px; margin-top:16px; border-radius:12px;
+  }
+  .mobile-panel.open{display:flex;}
+  @media (max-width:768px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* ===== HERO ===== */
+  #hero{
+    min-height:100vh;
+    position:relative;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px;
+    padding-bottom:110px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-portrait{order:-1; margin:0 auto 24px;}
+  }
+  .hero-name{font-size:clamp(40px, 6vw, 72px); text-transform:uppercase; line-height:1.05;}
+  .hero-tagline{font-size:18px; color:var(--muted); margin-top:20px; max-width:520px;}
+  .hero-tagline b{color:var(--gold); font-weight:600;}
+  .hero-portrait{
+    width:min(340px, 80vw); aspect-ratio:1; margin-left:auto; position:relative;
+    animation:float 4.6s ease-in-out infinite;
+  }
+  .hero-portrait .ring{
+    position:absolute; inset:0; border-radius:50%; border:4px solid #fff;
+  }
+  .hero-portrait .disc{
+    position:absolute; inset:14px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 60%, var(--amber) 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Poppins'; font-weight:800; font-size:64px; color:var(--bg);
+    overflow:hidden;
+  }
+  .hero-portrait .disc img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    display:block;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-16px);}
+  }
+
+  .scroll-arrow-wrap{
+    position:absolute; bottom:36px; left:50%;
+    transform:translateX(-50%);
+    display:flex; justify-content:center;
+  }
+  @media (max-width:768px){ .scroll-arrow-wrap{bottom:20px;} }
+  .scroll-arrow{
+    width:56px; height:56px; border-radius:50%;
+    background:rgba(255,255,255,0.04);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    animation: arrowFloat 2.4s ease-in-out infinite;
+    transition: transform .3s ease;
+  }
+  .scroll-arrow:hover{transform:scale(1.18);}
+  .scroll-arrow svg{
+    width:26px; height:26px;
+    animation: arrowGlow 2.8s ease-in-out infinite;
+  }
+  @keyframes arrowFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+  @keyframes arrowGlow{
+    0%   { fill:#5EEAD4; filter:drop-shadow(0 0 10px rgba(94,234,212,0.7)); }
+    50%  { fill:#0EA5A0; filter:drop-shadow(0 0 4px rgba(14,165,160,0.35)); }
+    100% { fill:#5EEAD4; filter:drop-shadow(0 0 10px rgba(94,234,212,0.7)); }
+  }
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:60px; align-items:start;}
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+  .script-line{font-family:'Caveat', cursive; font-size:44px; color:var(--gold-light);}
+  .about-bio b{color:var(--gold); font-weight:600;}
+  .social-row{display:flex; gap:14px; margin:28px 0;}
+  .about-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+
+  /* ===== SKILLS ===== */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  @media (max-width:900px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-col{
+    padding:0 28px;
+    border-left:1px solid var(--hairline);
+  }
+  .skill-col:first-child{border-left:none; padding-left:0;}
+  @media (max-width:900px){
+    .skill-col{border-left:none; border-top:1px solid var(--hairline); padding:28px 0 0; margin-top:28px;}
+    .skill-col:first-child{border-top:none; margin-top:0; padding-top:0;}
+  }
+  .skill-col h3{font-size:19px; line-height:1.3; margin-bottom:20px;}
+  .skill-item{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
+  .skill-item .tag{
+    width:38px; height:38px; border-radius:10px; background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:700; color:var(--bg); flex-shrink:0;
+    transition:transform .3s ease;
+  }
+  .skill-item:hover .tag{transform:rotate(8deg) scale(1.08);}
+  .skill-col ul{margin-top:6px;}
+  .skill-col ul li{color:var(--muted); margin-bottom:10px; padding-left:16px; position:relative; font-size:15px;}
+  .skill-col ul li::before{content:'—'; position:absolute; left:0; color:var(--gold);}
+
+  /* ===== BACKGROUND (education/experience) ===== */
+  .bg-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:800px){ .bg-grid{grid-template-columns:1fr; gap:40px;} }
+  .bg-col{border-left:1px solid var(--hairline); padding-left:36px;}
+  @media (max-width:800px){ .bg-col{border-left:none; padding-left:0;} }
+  .bg-col:first-child{border-left:none; padding-left:0;}
+  .bg-col h3{font-size:22px; margin-bottom:28px; color:var(--gold);}
+  .entry{display:flex; gap:18px; margin-bottom:30px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry .org{color:var(--gold); font-weight:700; font-size:16px;}
+  .entry .role{color:var(--gold); font-weight:600; font-size:14px; margin:2px 0 6px;}
+  .entry .desc{color:var(--muted); font-size:14px;}
+  .cert-entry{display:flex; gap:14px; margin-bottom:18px; align-items:flex-start;}
+  .cert-entry:last-child{margin-bottom:0;}
+  .cert-entry .cert-title{color:var(--gold); font-weight:600; font-size:15px; line-height:1.4;}
+  .cert-entry .cert-org{color:var(--muted); font-size:13px;}
+
+  /* ===== PROJECTS ===== */
+  .project{padding-bottom:0; margin-bottom:100px;}
+  .project:last-child{margin-bottom:0;}
+  .project-head{display:flex; align-items:baseline; gap:20px; margin-bottom:24px;}
+  .project-num{font-family:'Poppins'; font-weight:800; font-size:48px; color:var(--gold); opacity:0.5;}
+  .project-title{font-size:26px; text-transform:uppercase; color:var(--gold); line-height:1.25;}
+  .project-subtitle{color:var(--muted); font-size:14px; letter-spacing:0.04em; text-transform:uppercase; margin-top:4px;}
+ 
+.project-desc{color:var(--muted); margin-bottom:24px; padding-left:30px; padding-right:10px; text-align:justify;}/*.project-desc{color:var(--muted); max-width:760px; margin-bottom:24px; padding-left:200px;}*/
+.project-desc b{color:var(--gold); font-weight:600;}
+.project-links{display:flex; gap:14px; flex-wrap:wrap; padding-left:140px;}
+ 
+@media (max-width:800px){
+  .project-desc, .project-links{
+    padding-left:0;
+
+  }
+}
+  /* Carousel */
+  
+.carousel{position:relative; 
+  width:calc(100% + 60px); 
+  margin-left:-20px; 
+  border-radius:16px; 
+  overflow:hidden;
+   border:1px solid var(--hairline); 
+   background:var(--bg-alt); margin-bottom:24px;}
+
+ 
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s ease;
+}
+
+
+ .carousel-slide {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+  .carousel-slide img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+}
+/* Fix strictly for Project 2 (TaxBae) container */
+#p2Carousel {
+  aspect-ratio: 16 / 9;
+}
+
+#p2Carousel .carousel-track {
+  height: 100%;
+}
+
+#p2Carousel .carousel-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#p2Carousel .carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+  .carousel-arrow{position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(8,16,20,0.65); border:1.5px solid var(--gold); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; transition:background .3s ease;}
+  .carousel-arrow:hover{background:var(--gold);}
+  .carousel-arrow svg{width:18px; height:18px; stroke:var(--gold); fill:none; transition:stroke .3s ease;}
+  .carousel-arrow:hover svg{stroke:var(--bg);}
+  .carousel-arrow.prev{left:16px;}
+  .carousel-arrow.next{right:16px;}
+  .carousel-dots{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:2;}
+  .carousel-dot{width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.35); cursor:pointer; transition:background .3s ease, transform .3s ease;}
+  .carousel-dot.active{background:var(--gold); transform:scale(1.3);}
+
+  /* ===== CONTACT ===== */
+  .contact-heading{font-size:clamp(28px,4vw,40px); margin-bottom:44px;}
+  .contact-row{display:flex; align-items:center; gap:20px; padding:20px 0; border-top:1px solid var(--hairline);}
+  .contact-row:last-of-type{border-bottom:1px solid var(--hairline);}
+  .contact-row .label{color:var(--gold); font-weight:700; width:140px; flex-shrink:0;}
+  .contact-row .value{text-decoration:underline; text-underline-offset:4px;}
+
+  footer{padding:28px 0; text-align:center; color:var(--muted); font-size:14px;}
+
+  ::selection{background:var(--gold); color:var(--bg);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  @media (max-width:600px){
+  .carousel{
+    margin-left:8px;
+    margin-right:8px;
+    width:auto;
+  }
+}
+</style>
+<link type="text/css" rel="stylesheet" href="chrome-extension://fheoggkfdfchfphceeifdbepaooicaho/css/mcafee_fonts.css"></head>
+<body>
+
+<nav id="navbar" class="scrolled">
+  <div class="container">
+    <div class="nav-logo"><span class="gold">◆</span> Portfolio</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero" data-sec="hero">Home</a>
+      <a href="#about" data-sec="about">About</a>
+      <a href="#skills" data-sec="skills">Skills</a>
+      <a href="#background" data-sec="background">Background</a>
+      <a href="#projects" data-sec="projects">Projects</a>
+      <a href="#contact" data-sec="contact">Contact</a>
+      <div class="nav-underline" id="navUnderline" style="left: 0px; width: 0px;"></div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#background">Background</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow reveal"><b>DATA</b><span>ANALYST</span></div>
+      <h1 class="hero-name reveal">Saad <span class="gold">Ansari</span></h1>
+      <p class="hero-tagline reveal">Turning messy spreadsheets into <b>clear decisions</b> — with SQL, Python, and a healthy respect for <b>clean dashboards</b>.</p>
+    </div>
+    <div class="hero-portrait">
+      <div class="ring"></div>
+      <div class="disc">
+        <img src="images/img2.png" alt="Saad Ansari">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-arrow-wrap">
+    <a href="#about" class="scroll-arrow" aria-label="Scroll to About">
+      <svg viewBox="0 0 24 24"><path d="M12 16.5c-.3 0-.5-.1-.7-.3l-7-7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0L12 14.1l6.3-6.3c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-7 7c-.2.2-.4.3-.7.3z"></path></svg>
+    </a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="eyebrow reveal"><b>About</b><span>Me</span></div>
+    <div class="about-grid">
+      <div class="reveal"><p class="script-line">Hello, I'm Saad!</p></div>
+      <div class="reveal">
+        <p class="about-bio">I'm a detail-oriented data analyst who enjoys turning raw, complex datasets into clear, actionable insights. I work mainly in <b>SQL, Python (Pandas, NumPy), Excel, and Power BI</b> — building dashboards, KPI reports, and data models that support confident, data-driven decisions.</p>
+        <div class="social-row">
+          <a class="icon-outline" href="https://www.linkedin.com/in/saad-ansari-80b73331a/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"></path></svg></a>
+          <a class="icon-outline" href="tel:+918268666622" aria-label="Call Saad"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.6 5 6.4 6.4l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1L6.6 10.8z"></path></svg></a>
+          <a class="icon-outline" href="https://github.com/saadansari28" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.57.1.78-.25.78-.55 0-.27-.01-1.15-.02-2.09-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.2.66.79.55A10.52 10.52 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"></path></svg></a>
+        </div>
+        <div class="about-ctas">
+          <a href="#projects" class="btn">Projects</a>
+          <a href="docs/saad_ansari_resume.pdf" download="" class="btn white">Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="eyebrow reveal"><b>Technical</b><span>Skills</span></div>
+    <div class="skills-grid">
+      <div class="skill-col reveal">
+        <h3>Languages &amp;<br><span class="gold">Databases</span></h3>
+        <div class="skill-item"><div class="tag">SQL</div><span>SQL</span></div>
+        <div class="skill-item"><div class="tag">PY</div><span>Python</span></div>
+        <ul>
+          <li>MySQL</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+      <div class="skill-col reveal">
+        <h3>BI &amp;<br><span class="gold">Visualization</span></h3>
+        <div class="skill-item"><div class="tag">PBI</div><span>Power BI</span></div>
+        <div class="skill-item"><div class="tag">XL</div><span>Excel</span></div>
+        <ul>
+          <li>DAX &amp; Power Query</li>
+          <li>Data Modeling</li>
+        </ul>
+      </div>
+      <div class="skill-col reveal">
+        <h3>Data<br><span class="gold">Analysis</span></h3>
+        <ul>
+          <li>Data Cleaning &amp; Wrangling</li>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Statistical Analysis</li>
+          <li>KPI Tracking &amp; Reporting</li>
+        </ul>
+      </div>
+      <div class="skill-col reveal in">
+        <h3>Dev &amp;<br><span class="gold">Workflow</span></h3>
+        <ul>
+          <li>Git &amp; GitHub</li>
+          <li>Jupyter Notebook</li>
+          <li>VS Code</li>
+          <li>Analytical Problem-Solving</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="background">
+  <div class="container">
+    <div class="eyebrow reveal in"><b>Education &amp; Experience</b><span>Background</span></div>
+    <div class="bg-grid">
+      <div class="bg-col">
+        <h3>Education</h3>
+        <div class="entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v3.7c0 1.5 3.1 3.1 7 3.1s7-1.6 7-3.1v-3.7l-7 3.8-7-3.8z"></path></svg></div>
+          <div>
+            <div class="org">Mumbai University | M.H. Saboo Siddik College of Engineering</div>
+            <div class="role">B.E. in Information Technology (2022 – 2026)</div>
+            <div class="desc">CGPA: 8.59</div>
+          </div>
+        </div>
+        <div class="entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v3.7c0 1.5 3.1 3.1 7 3.1s7-1.6 7-3.1v-3.7l-7 3.8-7-3.8z"></path></svg></div>
+          <div>
+            <div class="org">Bhavans College, Andheri West</div>
+            <div class="role">Higher Secondary Certificate (HSC) — 2022</div>
+          </div>
+        </div>
+        <div class="entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v3.7c0 1.5 3.1 3.1 7 3.1s7-1.6 7-3.1v-3.7l-7 3.8-7-3.8z"></path></svg></div>
+          <div>
+            <div class="org">Maharashtra State Board</div>
+            <div class="role">Secondary School Certificate (SSC) — 2020</div>
+            <div class="desc">Scored 88.60%</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-col">
+        <h3>Certifications</h3>
+
+        <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">AWS Academy Graduate — Machine Learning Foundations</div>
+            <div class="cert-org">AWS Academy</div>
+          </div>
+        </div>
+
+         <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">AWS Academy Graduate — Cloud Foundations</div>
+            <div class="cert-org">AWS Academy</div>
+          </div>
+        </div>
+
+        <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">GenAI Powered Data Analytics Job Simulation</div>
+            <div class="cert-org">Tata Group (via Forage)</div>
+          </div>
+        </div>
+        <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">Data Visualisation: Empowering Business with Effective Insights</div>
+            <div class="cert-org">Tata Group (via Forage)</div>
+          </div>
+        </div>
+        <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">Data Analytics Job Simulation</div>
+            <div class="cert-org">Deloitte (via Forage)</div>
+          </div>
+        </div>
+        <div class="cert-entry reveal in">
+          <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.1L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.6-.9L12 2z"></path></svg></div>
+          <div>
+            <div class="cert-title">Software Engineering Job Simulation</div>
+            <div class="cert-org">Forage</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="eyebrow reveal in"><b>Notable</b><span>Projects</span></div>
+
+    <div class="project reveal in">
+      <div class="project-head">
+        <span class="project-num">01</span>
+        <div>
+          <h3 class="project-title">Credit Card Portfolio<br>Analysis</h3>
+          <div class="project-subtitle">3-Page Power BI Dashboard</div>
+        </div>
+      </div>
+
+      <div class="carousel" id="p1Carousel">
+        <div class="carousel-track" id="p1Track" style="transform: translateX(-100%);">
+          <div class="carousel-slide"><img src="images/project1-page1.JPG" alt="Transaction Report page"></div>
+          <div class="carousel-slide"><img src="images/project1-page2.JPG" alt="Customer Report page"></div>
+          <div class="carousel-slide"><img src="images/project1-page3.JPG" alt="Credit Risk and Portfolio Health page"></div>
+
+          
+        </div>
+        <button class="carousel-arrow prev" id="p1Prev" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5L8 12l7 7.5"></path></svg>
+        </button>
+        <button class="carousel-arrow next" id="p1Next" aria-label="Next page">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5L16 12l-7 7.5"></path></svg>
+        </button>
+        <div class="carousel-dots" id="p1Dots">
+          <div class="carousel-dot"></div>
+          <div class="carousel-dot active"></div>
+          <div class="carousel-dot"></div>
+        </div>
+      </div>
+
+      <p class="project-desc">Built a <b>3-page Power BI report</b> analyzing 10,000+ customer credit card records, covering transaction trends, customer segmentation, and credit risk. Designed a <b>relational data model in PostgreSQL</b>, linking customer and transaction tables via foreign keys, and built custom <b>DAX measures</b> for per-customer acquisition cost, delinquency rate, and utilization-based risk segmentation. The analysis uncovered a <b>mismatch between card-tier acquisition cost and revenue</b>, and a <b>counterintuitive relationship between credit utilization and delinquency rate</b>. Also simulated a real-world data refresh pipeline by appending new records in SQL and validating end-to-end updates in Power BI.</p>
+
+      <div class="project-links">
+ <a class="btn" href="docs/ccpbi-dashboard.pbix" download="">Power BI File</a>
+<a class="btn white" href="docs/Credit_Card_Portfolio_Insights.pptx" download="">Insights Deck</a>
+<a class="btn white" href="docs/case-study.pdf" download>Case Study</a>
+<a class="btn white" href="docs/ccpbi-report.pdf" download>PDF Report</a>
+</div>
+
+
+
+
+    </div>
+
+<div class="project reveal">
+  <div class="project-head">
+    <span class="project-num">02</span>
+    <div>
+      <h3 class="project-title">TaxBae<br>ax &amp; Finance Assistant</h3>
+      <div class="project-subtitle">AI-Powered Personal Finance App · Team Project</div>
+    </div>
+  </div>
+
+<div class="carousel carousel-tall" id="p2Carousel">
+    <div class="carousel-track" id="p2Track">
+    <div class="carousel-slide"><img src="images/project2-page1.png" alt="Project 2 - page 1"></div>
+    <div class="carousel-slide"><img src="images/project2-page2.png" alt="Project 2 - page 2"></div>
+    <div class="carousel-slide"><img src="images/project2-page3.png" alt="Project 2 - page 3"></div>
+    <div class="carousel-slide"><img src="images/project2-page4.png" alt="Project 2 - page 4"></div>
+    <div class="carousel-slide"><img src="images/project2-page5.png" alt="Project 2 - page 5"></div>
+    <div class="carousel-slide"><img src="images/project2-page6.png" alt="Project 2 - page 6"></div>
+    <div class="carousel-slide"><img src="images/project2-page7.png" alt="Project 2 - page 7"></div>
+    <div class="carousel-slide"><img src="images/project2-page8.png" alt="Project 2 - page 8"></div>
+    <div class="carousel-slide"><img src="images/project2-page9.png" alt="Project 2 - page 9"></div>
+  </div>
+  <button class="carousel-arrow prev" id="p2Prev" aria-label="Previous page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5L8 12l7 7.5"/></svg>
+  </button>
+  <button class="carousel-arrow next" id="p2Next" aria-label="Next page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5L16 12l-7 7.5"/></svg>
+  </button>
+  <div class="carousel-dots" id="p2Dots">
+    <div class="carousel-dot active"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+  </div>
+</div>
+
+<p class="project-desc">Team project: a mobile-first, <b>AI-powered personal finance and tax assistant</b> for Indian users. The app combines <b>EMI and SIP calculators</b>, <b>risk-based investment recommendations</b> (income, age and low/medium/high risk appetite mapped to a suggested portfolio allocation), an <b>expense tracker</b>, a <b>tax deductions finder</b>, and an <b>AI chat assistant</b> for tax questions, with a Tax Year 2024-25 summary on the home screen. My role: <b>[what you built]</b>. Built with [tech stack].</p> <!-- <div class="project-links">
+    <a class="btn" href="project2-file.pbix" download>Power BI File</a>
+    <a class="btn white" href="project2-insights.pptx" download>Insights Deck</a>
+    <a class="btn white" href="project2-case-study.pdf" target="_blank" rel="noreferrer">Case Study</a>
+    <a class="btn white" href="project2-report.pdf" target="_blank" rel="noreferrer">PDF Report</a>
+  </div>-->
+
+</div>
+
+<div class="project reveal">
+  <div class="project-head">
+    <span class="project-num">03</span>
+    <div>
+      <h3 class="project-title">Diabetes Predict<br>System</h3>
+      <div class="project-subtitle">Machine Learning Web App · Team of 4</div>
+    </div>
+  </div>
+
+ <div class="carousel" id="p3Carousel">
+  <div class="carousel-track" id="p3Track">
+    <div class="carousel-slide"><img src="images/project3-page1.png" alt="Project 3 - page 1"></div>
+    <div class="carousel-slide"><img src="images/project3-page2.png" alt="Project 3 - page 2"></div>
+    <div class="carousel-slide"><img src="images/project3-page3.png" alt="Project 3 - page 3"></div>
+    <div class="carousel-slide"><img src="images/project3-page4.png" alt="Project 3 - page 4"></div>
+    <div class="carousel-slide"><img src="images/project3-page5.png" alt="Project 3 - page 5"></div>
+    <div class="carousel-slide"><img src="images/project3-page6.png" alt="Project 3 - page 6"></div>
+    <div class="carousel-slide"><img src="images/project3-page7.png" alt="Project 3 - page 7"></div>
+    <div class="carousel-slide"><img src="images/project3-page8.png" alt="Project 3 - page 8"></div>
+    <div class="carousel-slide"><img src="images/project3-page9.png" alt="Project 3 - page 9"></div>
+  </div>
+  <button class="carousel-arrow prev" id="p3Prev" aria-label="Previous page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5L8 12l7 7.5"/></svg>
+  </button>
+  <button class="carousel-arrow next" id="p3Next" aria-label="Next page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5L16 12l-7 7.5"/></svg>
+  </button>
+  <div class="carousel-dots" id="p3Dots">
+    <div class="carousel-dot active"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+  </div>
+</div>
+
+<p class="project-desc">Team project (4 members): a machine learning web app that predicts diabetes risk from 8 health inputs: pregnancies, glucose, blood pressure, skin thickness, insulin, BMI, diabetes pedigree function and age. Trained an <b>SVM classifier</b> on the <b>Pima Indians Diabetes Dataset</b> using Python (Scikit-learn, Pandas, NumPy), after <b>data preprocessing and a train-test split</b>, and served real-time predictions through a <b>[Flask / Django]</b> backend with an HTML/CSS/JavaScript frontend. My role: <b>[your part]</b>. Model accuracy: <b>[your real score]</b>.</p>  <!--<div class="project-links">
+    <a class="btn" href="project3-file.pbix" download>Power BI File</a>
+    <a class="btn white" href="project3-insights.pptx" download>Insights Deck</a>
+    <a class="btn white" href="project3-case-study.pdf" target="_blank" rel="noreferrer">Case Study</a>
+    <a class="btn white" href="project3-report.pdf" target="_blank" rel="noreferrer">PDF Report</a>
+  </div>-->
+  
+</div>
+
+<div class="project reveal">
+  <div class="project-head">
+    <span class="project-num">04</span>
+    <div>
+      <h3 class="project-title">Library Management<br>System</h3>
+      <div class="project-subtitle">DESKTOP APP — JAVA SWING, AWT & MYSQL</div>
+    </div>
+  </div>
+
+  <div class="carousel" id="p4Carousel">
+  <div class="carousel-track" id="p4Track">
+    <div class="carousel-slide"><img src="images/project4-page1.png" alt="Project 4 - page 1"></div>
+    <div class="carousel-slide"><img src="images/project4-page2.png" alt="Project 4 - page 2"></div>
+    <div class="carousel-slide"><img src="images/project4-page3.png" alt="Project 4 - page 3"></div>
+    <div class="carousel-slide"><img src="images/project4-page4.png" alt="Project 4 - page 4"></div>
+    <div class="carousel-slide"><img src="images/project4-page5.png" alt="Project 4 - page 5"></div>
+    <div class="carousel-slide"><img src="images/project4-page6.png" alt="Project 4 - page 6"></div>
+    <div class="carousel-slide"><img src="images/project4-page7.png" alt="Project 4 - page 7"></div>
+    <div class="carousel-slide"><img src="images/project4-page8.png" alt="Project 4 - page 8"></div>
+    <div class="carousel-slide"><img src="images/project4-page9.png" alt="Project 4 - page 9"></div>
+  </div>
+  <button class="carousel-arrow prev" id="p4Prev" aria-label="Previous page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5L8 12l7 7.5"/></svg>
+  </button>
+  <button class="carousel-arrow next" id="p4Next" aria-label="Next page">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5L16 12l-7 7.5"/></svg>
+  </button>
+  <div class="carousel-dots" id="p4Dots">
+    <div class="carousel-dot active"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+  </div>
+</div>
+
+<p class="project-desc">Designed and developed a desktop-based <b>Library Management System</b> using <b>Java Swing and AWT</b> for the graphical user interface, integrated with a <b>MySQL relational database via JDBC</b>. Built distinct <b>Admin and Student authentication workflows</b> along with structured dashboard management interfaces. Developed automated module features for <b>book issuance and return handling</b>, real-time availability status tracking, student record creation, and dynamic database querying using <b>RS2XML table rendering</b>.</p><!--
+  <div class="project-links">
+    <a class="btn" href="project4-file.pbix" download>Power BI File</a>
+    <a class="btn white" href="project4-insights.pptx" download>Insights Deck</a>
+    <a class="btn white" href="project4-case-study.pdf" target="_blank" rel="noreferrer">Case Study</a>
+    <a class="btn white" href="project4-report.pdf" target="_blank" rel="noreferrer">PDF Report</a>
+  </div>-->
+</div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="eyebrow reveal"><b>Contact</b><span>Info</span></div>
+    <h2 class="contact-heading reveal">Let's connect and<br><span class="gold">work together!</span></h2>
+    <div class="reveal">
+      <div class="contact-row">
+        <div class="icon-outline"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.6 5 6.4 6.4l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1L6.6 10.8z"></path></svg></div>
+        <div><div class="label">Phone</div><a class="value" href="tel:+918268666622">+91 8268666622</a></div>
+      </div>
+      <div class="contact-row">
+        
+        <div class="icon-outline"><svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 011 1v14a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1zm10 8L3.5 5.5v.01L12 12l8.5-6.49V5.5L12 12z"></path></svg></div>
+        <div><div class="label">Email</div><a class="value" href="mailto:saadansari4678@gmail.com">saadansari4678@gmail.com</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="icon-outline"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"></path></svg></div>
+        <div><div class="label">LinkedIn</div><a class="value" href="https://www.linkedin.com/in/saad-ansari-80b73331a/?skipRedirect=true" target="_blank" rel="noreferrer">linkedin.com/in/saad-ansari</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="icon-outline"><svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.57.1.78-.25.78-.55 0-.27-.01-1.15-.02-2.09-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.2.66.79.55A10.52 10.52 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"></path></svg></div>
+        <div><div class="label">GitHub</div><a class="value" href="https://github.com/saadansari28" target="_blank" rel="noreferrer">github.com/saadansari28</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Saad Ansari. All rights reserved.</footer>
+
+<script>
+  // Navbar scroll state
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+    // Active nav link underline
+  const navLinksEl = document.querySelectorAll('.nav-links a');
+  const underline = document.getElementById('navUnderline');
+  const sections = document.querySelectorAll('section');
+  let currentLink = navLinksEl[0];
+
+  function setUnderline(link){
+    if(!link) return;
+    currentLink = link;
+    const parentRect = link.closest('.nav-links').getBoundingClientRect();
+    const rect = link.getBoundingClientRect();
+    underline.style.left = (rect.left - parentRect.left) + 'px';
+    underline.style.width = rect.width + 'px';
+  }
+
+  // Check which section is under the middle of the screen right now
+  function updateActiveFromScroll(){
+    const mid = window.scrollY + window.innerHeight * 0.45;
+    let activeId = sections[0].id;
+    sections.forEach(s => {
+      if (mid >= s.offsetTop) activeId = s.id;
+    });
+    setUnderline(document.querySelector(`.nav-links a[data-sec="${activeId}"]`));
+  }
+
+  // Update underline while scrolling
+  const secIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = e.target.id;
+        const link = document.querySelector(`.nav-links a[data-sec="${id}"]`);
+        if(link) setUnderline(link);
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => secIO.observe(s));
+
+  // On refresh: use the real scroll position, not always Home
+  window.addEventListener('load', () => {
+    updateActiveFromScroll();
+    setTimeout(updateActiveFromScroll, 150); // browser restores scroll a moment after load
+  });
+  window.addEventListener('resize', () => setUnderline(currentLink));
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobilePanel = document.getElementById('mobilePanel');
+  hamburger.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+
+    // Project 1 dashboard carousel — arrows, dots, autoplay, pause on hover
+  (function(){
+    const track = document.getElementById('p1Track');
+    if(!track) return;
+    const dots = document.querySelectorAll('#p1Dots .carousel-dot');
+    const slides = track.children.length;
+    let index = 0, timer;
+
+    function goTo(i){
+      index = (i + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+    function startTimer(){ timer = setInterval(next, 5000); }
+    function stopTimer(){ clearInterval(timer); }
+
+    document.getElementById('p1Next').addEventListener('click', () => { next(); stopTimer(); startTimer(); });
+    document.getElementById('p1Prev').addEventListener('click', () => { prev(); stopTimer(); startTimer(); });
+    dots.forEach((d, di) => d.addEventListener('click', () => { goTo(di); stopTimer(); startTimer(); }));
+
+    const wrap = document.getElementById('p1Carousel');
+    wrap.addEventListener('mouseenter', stopTimer);
+    wrap.addEventListener('mouseleave', startTimer);
+    goTo(0);
+    startTimer();
+  })();
+
+  // Project 3 dashboard carousel — arrows, dots, autoplay, pause on hover
+  (function(){
+    const track = document.getElementById('p3Track');
+    if(!track) return;
+    const dots = document.querySelectorAll('#p3Dots .carousel-dot');
+    const slides = track.children.length;
+    let index = 0, timer;
+
+    function goTo(i){
+      index = (i + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+    function startTimer(){ timer = setInterval(next, 4500); }
+    function stopTimer(){ clearInterval(timer); }
+
+    document.getElementById('p3Next').addEventListener('click', () => { next(); stopTimer(); startTimer(); });
+    document.getElementById('p3Prev').addEventListener('click', () => { prev(); stopTimer(); startTimer(); });
+    dots.forEach((d, di) => d.addEventListener('click', () => { goTo(di); stopTimer(); startTimer(); }));
+
+    const wrap = document.getElementById('p3Carousel');
+    wrap.addEventListener('mouseenter', stopTimer);
+    wrap.addEventListener('mouseleave', startTimer);
+    goTo(0);
+    startTimer();
+  })();
+
+    // Project 2 dashboard carousel — arrows, dots, autoplay, pause on hover
+  (function(){
+    const track = document.getElementById('p2Track');
+    if(!track) return;
+    const dots = document.querySelectorAll('#p2Dots .carousel-dot');
+    const slides = track.children.length;
+    let index = 0, timer;
+
+    function goTo(i){
+      index = (i + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+    function startTimer(){ timer = setInterval(next, 4500); }
+    function stopTimer(){ clearInterval(timer); }
+
+    document.getElementById('p2Next').addEventListener('click', () => { next(); stopTimer(); startTimer(); });
+    document.getElementById('p2Prev').addEventListener('click', () => { prev(); stopTimer(); startTimer(); });
+    dots.forEach((d, di) => d.addEventListener('click', () => { goTo(di); stopTimer(); startTimer(); }));
+
+    const wrap = document.getElementById('p2Carousel');
+    wrap.addEventListener('mouseenter', stopTimer);
+    wrap.addEventListener('mouseleave', startTimer);
+    goTo(0);
+    startTimer();
+  })();
+
+  // Project 4 dashboard carousel — arrows, dots, autoplay, pause on hover
+  (function(){
+    const track = document.getElementById('p4Track');
+    if(!track) return;
+    const dots = document.querySelectorAll('#p4Dots .carousel-dot');
+    const slides = track.children.length;
+    let index = 0, timer;
+
+    function goTo(i){
+      index = (i + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+    function startTimer(){ timer = setInterval(next, 4500); }
+    function stopTimer(){ clearInterval(timer); }
+
+    document.getElementById('p4Next').addEventListener('click', () => { next(); stopTimer(); startTimer(); });
+    document.getElementById('p4Prev').addEventListener('click', () => { prev(); stopTimer(); startTimer(); });
+    dots.forEach((d, di) => d.addEventListener('click', () => { goTo(di); stopTimer(); startTimer(); }));
+
+    const wrap = document.getElementById('p4Carousel');
+    wrap.addEventListener('mouseenter', stopTimer);
+    wrap.addEventListener('mouseleave', startTimer);
+    goTo(0);
+    startTimer();
+  })();
+
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<span id="PING_CONTENT_PUSH_NOTIFICATION" style="display: none;"></span><span id="PING_CONTENT_DLS_POPUP" style="display: none;"></span><div style="background-color: transparent; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; bottom: 15px; display: block; margin: 0px; opacity: 1; padding: 0px; position: fixed; right: 15px; z-index: 2147483647;"></div></body></html>
