@@ -629,9 +629,57 @@
   <div class="container">
     <div class="eyebrow reveal in"><b>Notable</b><span>Projects</span></div>
 
-    <div class="project reveal in">
+
+
+     <div class="project reveal in">
       <div class="project-head">
         <span class="project-num">01</span>
+        <div>
+          <h3 class="project-title">Cloud Kitchen Performance <br>Dashboard</h3>
+          <div class="project-subtitle">3-Page Power BI Dashboard</div>
+        </div>
+      </div>
+
+      <div class="carousel" id="p1Carousel">
+        <div class="carousel-track" id="p1Track" style="transform: translateX(-100%);">
+          <div class="carousel-slide"><img src="images/ck01.png" alt="Transaction Report page"></div>
+          <div class="carousel-slide"><img src="images/ck02.png" alt="Customer Report page"></div>
+          <div class="carousel-slide"><img src="images/ck03.png" alt="Credit Risk and Portfolio Health page"></div>
+
+          
+        </div>
+        <button class="carousel-arrow prev" id="p1Prev" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5L8 12l7 7.5"></path></svg>
+        </button>
+        <button class="carousel-arrow next" id="p1Next" aria-label="Next page">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5L16 12l-7 7.5"></path></svg>
+        </button>
+        <div class="carousel-dots" id="p1Dots">
+          <div class="carousel-dot"></div>
+          <div class="carousel-dot active"></div>
+          <div class="carousel-dot"></div>
+        </div>
+      </div>
+
+<p class="project-desc">Built a <b>3-page Power BI dashboard</b> analyzing <b>1.23 lakh orders</b> from a multi-brand cloud kitchen network (51 brands, 409 stores), covering revenue trends, discounting, and cancellation risk. Cleaned raw data using <b>Python (Pandas)</b>, designed a <b>star schema data model</b> (1 fact and 4 dimension tables), and engineered custom <b>DAX measures</b> for net revenue, AOV, discount %, and cancellation rate. The analysis uncovered that <b>cancellation risks depend strictly on the sales channel rather than the city</b> (IRCTC at 18% vs. ~2% on Zomato/Swiggy) and that <b>Eatsure heavily discounts at 42%</b> compared to ~23% on the aggregators. Leveraged the insight that <b>Zomato and Swiggy drive 84% of total revenue</b> with demand peaking at 3 PM to deliver actionable strategic recommendations on discounting, high-risk stores, and staffing optimization.</p>
+
+      <div class="project-links">
+ <a class="btn" href="docs/rbf_int_f.pbix" download="">Power BI File</a>
+<a class="btn white" href="docs/CloudKitchen_Insights_deck.pptx" download="">Insights Deck</a>
+<a class="btn white" href="docs/CloudKitchen_Case_Study.pdf" target="_blank" rel="noreferrer">Case Study</a>
+<a class="btn white" href="docs/rbf_int.pdf" target="_blank" rel="noreferrer">PDF Report</a>
+</div>
+
+
+
+
+    </div>
+
+
+
+    <div class="project reveal in">
+      <div class="project-head">
+        <span class="project-num">02</span>
         <div>
           <h3 class="project-title">Credit Card Portfolio<br>Analysis</h3>
           <div class="project-subtitle">3-Page Power BI Dashboard</div>
